@@ -810,10 +810,10 @@ function create_all_criteria(pat) {
 
 	//22
 	tmp = [];
-	n = "(A < B < C) | (A > B > C) | (A ? B ? C)";
+	n = "(A < B < C) | (A > B > C) | (A </> B </> C)";
 	tmp.push(criteria_generate(pat, n, "A < B < C", function(p) { return (p.n[0] < p.n[1]) && (p.n[1] < p.n[2]);}, tmp));
 	tmp.push(criteria_generate(pat, n, "A > B > C", function(p) { return (p.n[0] > p.n[1]) && (p.n[1] > p.n[2]);}, tmp));
-	tmp.push(criteria_generate(pat, n, "A ? B ? C", function(p) { return !(((p.n[0] < p.n[1]) && (p.n[1] < p.n[2])) || ((p.n[0] > p.n[1]) && (p.n[1] > p.n[2])));}, tmp));
+	tmp.push(criteria_generate(pat, n, "A </> B </> C", function(p) { return !(((p.n[0] < p.n[1]) && (p.n[1] < p.n[2])) || ((p.n[0] > p.n[1]) && (p.n[1] > p.n[2])));}, tmp));
 	cr.push({name: n, cards: tmp, difficulty: 1});
 
 	//23
@@ -911,9 +911,9 @@ function create_all_criteria(pat) {
 	//34
 	tmp = [];
 	n = "(A <= BC) | (B <= AC) | (C <= AB)";
-	tmp.push(criteria_generate(pat, n, "A < BC", function(p) { return (p.n[0] <= p.n[1]) && (p.n[0] <= p.n[2]); }, tmp));
-	tmp.push(criteria_generate(pat, n, "B < AC", function(p) { return (p.n[1] <= p.n[0]) && (p.n[1] <= p.n[2]); }, tmp));
-	tmp.push(criteria_generate(pat, n, "C < AB", function(p) { return (p.n[2] <= p.n[0]) && (p.n[2] <= p.n[1]); }, tmp));
+	tmp.push(criteria_generate(pat, n, "A <= BC", function(p) { return (p.n[0] <= p.n[1]) && (p.n[0] <= p.n[2]); }, tmp));
+	tmp.push(criteria_generate(pat, n, "B <= AC", function(p) { return (p.n[1] <= p.n[0]) && (p.n[1] <= p.n[2]); }, tmp));
+	tmp.push(criteria_generate(pat, n, "C <= AB", function(p) { return (p.n[2] <= p.n[0]) && (p.n[2] <= p.n[1]); }, tmp));
 	cr.push({name: n, cards: tmp, difficulty: 2});
 
 	//35
